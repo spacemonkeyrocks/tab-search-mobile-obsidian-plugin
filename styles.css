@@ -1,0 +1,53 @@
+/* Tab Search Plugin Styles */
+
+.tab-search-floating-btn {
+    /* All styling is applied via JavaScript for dynamic theming support */
+    /* This file exists for potential CSS-based overrides */
+}
+
+.tab-search-overlay {
+    /* Search overlay styling handled in JavaScript */
+}
+
+.tab-search-container {
+    /* Search container styling handled in JavaScript */
+}
+
+.tab-search-input {
+    /* Search input styling handled in JavaScript */
+}
+
+.tab-search-results {
+    /* Results container styling handled in JavaScript */
+}
+
+.tab-search-result-item {
+    /* Result item styling handled in JavaScript */
+}
+
+/* Ensure proper z-index layering */
+.tab-search-floating-btn {
+    z-index: 1001 !important;
+}
+
+.tab-search-overlay {
+    z-index: 1002 !important;
+}
+
+/* Override any conflicting styles */
+.tab-search-floating-btn,
+.tab-search-container {
+    box-sizing: border-box !important;
+}
+
+/* Mobile-specific adjustments */
+@media screen and (max-width: 768px) {
+    .tab-search-container {
+        max-width: 95% !important;
+        max-height: 90% !important;
+    }
+    
+    .tab-search-input {
+        font-size: 16px !important; /* Prevent zoom on iOS */
+    }
+}

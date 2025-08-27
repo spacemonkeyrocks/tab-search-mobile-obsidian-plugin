@@ -1,0 +1,11 @@
+services:
+  release:
+    build: .
+    image: tab-search-plugin-releaser:0.1.0
+    volumes:
+      # The source code mount has been removed to ensure it is a self contained build
+      # This prevents host from overriding container's node_modules
+      - /usr/src/app/node_modules
+    environment:
+      # You need to pass your GitHub token for semantic-release to work
+      - GITHUB_TOKEN=${GITHUB_TOKEN}

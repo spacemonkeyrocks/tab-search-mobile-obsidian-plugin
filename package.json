@@ -13,7 +13,7 @@
     "format": "prettier --write src/**/*.js",
     "release": "npm run build && semantic-release",
     "release:dry": "npm run build && semantic-release --dry-run",
-    "release:test": "docker compose build --no-cache --progress=plain && docker compose run --rm semantic-release"
+    "release:test": "docker compose build --no-cache --progress=plain && docker compose run --rm release npx semantic-release --dry-run"
   },
   "devDependencies": {
     "@eslint/js": "^9.34.0",

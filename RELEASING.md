@@ -101,7 +101,7 @@ After you've pushed your branch to GitHub, follow these steps:
 4.  **Fill Out the Template:** GitHub will automatically pre-fill the description with the content from [PULL_REQUEST_TEMPLATE.md](PULL_REQUEST_TEMPLATE.md). Fill out the relevant sections.
 5.  **Create the Pull Request:** Click the **"Create pull request"** button.
 
-#### Important Note: The Publishing Process 📝
+#### Important Note: The Publishing Process
 Creating a release on your GitHub repository (which semantic-release does automatically) is a necessary prerequisite, but it does not automatically submit your plugin to the Obsidian team for review and inclusion in the community list.
 
 The process is:

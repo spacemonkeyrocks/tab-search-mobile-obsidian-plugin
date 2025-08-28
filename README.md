@@ -58,12 +58,12 @@ Search and navigate between open tabs on Obsidian Mobile with a floating search 
 
 ## Platform Support
 
-| Platform | Support |
-|----------|---------|
-| Android Mobile | ✅ Full Support |
-| iOS Mobile | ✅ Full Support |
-| Desktop | ❌ Not Supported |
-| Tablet | ⚠️ May Work* |
+| Platform       | Support           |
+|----------------|-------------------|
+| Android Mobile | ✅ Full Support   |
+| iOS Mobile     | ✅ Full Support   |
+| Desktop        | ❌ Not Supported  |
+| Tablet         | ⚠️ May Work*      |
 
 *Tablet support depends on whether Obsidian runs in mobile mode on your device.
 

@@ -25,17 +25,39 @@ The plugin source code is organized in the `src/` directory with multiple files 
 6. Submit a pull request with a clear description of your changes.
 
 ## Testing
-Thorough testing is crucial to ensure the plugin works reliably for everyone. To test and debug the Android App see [Debugging Android App](#android-app).
 
-When you make a change, please test the following on both Desktop and Mobile:
+Thorough testing is crucial to ensure the plugin works reliably. As this is a mobile-only plugin, the primary testing should be on Android and iOS. The main test for Desktop is to ensure the plugin remains completely inactive.
 
-- [ ] Does the button appear and disappear correctly when scrolling past the `scrollThreshold`?
-- [ ] Does clicking the button scroll the note to the top?
-- [ ] Do all settings (color, size, position) work as expected?
-- [ ] Does the "Auto-adapt for mobile" feature correctly detect the position and size of the native **Switch Between Edit/Read** floating action button in the bottom right corner?
-- [ ] Does the "Use mobile theme colors" feature correctly detect the theme colors?
-- [ ] Does the plugin still work after reloading Obsidian?
-- [ ] Does the plugin still work after switching between different notes?
+Core Activation & Floating Button
+
+- [ ] Does the floating search button appear only when the mobile tab switcher view is open?
+- [ ] Does the button disappear immediately after closing the tab switcher or navigating to a tab?
+- [ ] Does tapping the button correctly open the search interface?
+
+Search Interface Functionality
+
+- [ ] Does the search UI appear at the top of the screen?
+- [ ] Does typing in the search bar filter the list of open tabs in real-time?
+- [ ] Is the matching text in the search results correctly highlighted?
+- [ ] Does the "Aa" (case-sensitivity) button toggle its state visually and functionally?
+- [ ] Does the "X" (clear) button clear the search input?
+- [ ] Does tapping a result navigate to the correct tab and close the search UI?
+- [ ] Does tapping the dark overlay behind the search bar close the UI?
+- [ ] Does pressing 'Escape' (on a connected keyboard, if available) close the UI?
+
+Settings Verification
+
+- [ ] Does disabling the plugin via the "Enable plugin" toggle prevent the button from appearing?
+- [ ] Does the "Use theme colors" feature correctly detect and apply the theme's colors and position?
+- [ ] When "Use theme colors" is turned off, do the manual position and size settings work as expected?
+- [ ] Does changing the "Search placeholder" text update the text in the search bar?
+- [ ] Does the "Max results" setting correctly limit the number of results shown?
+
+General Reliability
+
+- [ ] On Desktop, does the plugin correctly do nothing? (This is the expected behavior).
+- [ ] Does the plugin still work correctly after reloading Obsidian?
+- [ ] Does the plugin still work after opening and closing several new tabs?
 
 ## Publishing
 This repository uses [semantic-release](https://github.com/semantic-release/semantic-release) to automate the release process. Publishing is handled automatically by a GitHub Action when commits are pushed to the `main` branch.
@@ -55,7 +77,7 @@ Releasing is fully automatic:
 3. The `package.json`, `manifest.json`, and `versions.json` files are automatically updated with the new version.
 4. A new tag is created on GitHub.
 5. A new GitHub Release is created with the release notes and the plugin files from `src/` (`main.js`, `button-manager.js`, `mobile-utils.js`, `logger.js`, `settings.js`) and root (`manifest.json`, `styles.css`) attached as assets.
-6. The `brianrodri/semantic-release-obsidian-plugin` package then automatically submits the new version to the Obsidian Community Plugin repository.
+6. The `brianrodri/semantic-release-obsidian-plugin` package ensures that the version in the `manifest.json` is updated to match the new version created by `semantic-release`. The new release is automatically picked up by the Obsidian Community Plugin repository, because the plugin has been [submitted](RELEASING.md#important-note-the-publishing-process).
 
 ## Debugging
 

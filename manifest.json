@@ -3,7 +3,7 @@
     "name": "Tab Search (Mobile Only)",
     "version": "1.0.0",
     "minAppVersion": "0.15.0",
-    "description": "Search and navigate between open tabs in the Obsidian Mobile App. Adds a floating search button when the tab view is open.",
+    "description": "Search and navigate between open tabs in the tab view on the Obsidian Mobile App. Adds a floating search button when the tab view is open.",
     "author": "Space Monkey Rocks",
     "authorUrl": "https://github.com/spacemonkeyrocks/tab-search-obsidian-plugin",
     "isDesktopOnly": false

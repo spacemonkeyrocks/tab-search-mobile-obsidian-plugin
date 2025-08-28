@@ -327,10 +327,10 @@ class TabSearchSettingTab extends PluginSettingTab {
 
         // Debug info section (mobile only)
         if (isMobile && this.plugin.tabSearchManager) {
-            const debugSection = containerEl.createEl('details');
-            debugSection.createEl('summary', { text: 'Debug Info (Live)' });
+            // Replaced collapsible section with a standard heading
+            containerEl.createEl('h3', { text: 'Debug Info' });
 
-            const debugContent = debugSection.createEl('div');
+            const debugContent = containerEl.createEl('div');
             debugContent.style.padding = '10px';
             debugContent.style.backgroundColor = 'var(--background-secondary)';
             debugContent.style.borderRadius = '5px';

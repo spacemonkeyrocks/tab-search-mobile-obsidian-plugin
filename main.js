@@ -1922,9 +1922,8 @@ var require_settings = __commonJS({
           debugInfo.style.fontSize = "12px";
         }
         if (isMobile && this.plugin.tabSearchManager) {
-          const debugSection = containerEl.createEl("details");
-          debugSection.createEl("summary", { text: "Debug Info (Live)" });
-          const debugContent = debugSection.createEl("div");
+          containerEl.createEl("h3", { text: "Debug Info" });
+          const debugContent = containerEl.createEl("div");
           debugContent.style.padding = "10px";
           debugContent.style.backgroundColor = "var(--background-secondary)";
           debugContent.style.borderRadius = "5px";

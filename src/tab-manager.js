@@ -205,7 +205,7 @@ class TabManager {
     }
 
     navigateToTab(tab) {
-        this.plugin.logger.logInfo(
+        this.plugin.logger.logVerbose(
             `Navigating to tab: ${tab.displayName} (${tab.source})`
         );
 

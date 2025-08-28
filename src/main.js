@@ -74,10 +74,10 @@ class TabSearchPlugin extends Plugin {
 
         if (shouldDowngrade) {
             const delayInMs = this.settings.autoDowngradeLevelMinutes * 60 * 1000;
-            this.logger.logInfo(`Log level will auto-downgrade to INFO in ${this.settings.autoDowngradeLevelMinutes} minutes.`);
+            this.logger.logVerbose(`Log level will auto-downgrade to INFO in ${this.settings.autoDowngradeLevelMinutes} minutes.`);
             
             this.logDowngradeTimer = setTimeout(() => {
-                this.logger.logInfo("Auto-downgrading log level to INFO.");
+                this.logger.logVerbose("Auto-downgrading log level to INFO.");
                 this.settings.logLevel = LogLevel.INFO;
                 this.saveSettings();
             }, delayInMs);

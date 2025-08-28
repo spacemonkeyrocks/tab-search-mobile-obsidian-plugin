@@ -304,7 +304,7 @@ var require_mobile_tab_detector = __commonJS({
         };
       }
       async initialize() {
-        this.plugin.logger.logInfo(
+        this.plugin.logger.logVerbose(
           "MobileTabDetector: Starting initialization with DOM observer"
         );
         this.domObserver = new ObsidianDOMObserver({
@@ -320,7 +320,7 @@ var require_mobile_tab_detector = __commonJS({
         );
         this.domObserver.start();
         this.checkCurrentState();
-        this.plugin.logger.logInfo(
+        this.plugin.logger.logVerbose(
           "MobileTabDetector: Initialization complete"
         );
       }
@@ -370,7 +370,7 @@ var require_mobile_tab_detector = __commonJS({
           this.debugInfo.lastStateChange = (/* @__PURE__ */ new Date()).toLocaleTimeString();
           this.debugInfo.detectionMethod = detectionMethod;
           this.debugInfo.currentElements = currentElements;
-          this.plugin.logger.logInfo(
+          this.plugin.logger.logVerbose(
             `Tab view state changed: ${previousState ? "OPEN" : "CLOSED"} -> ${this.isTabViewOpen ? "OPEN" : "CLOSED"} (${detectionMethod})`
           );
           this.notifyStateChange(this.isTabViewOpen);
@@ -392,7 +392,7 @@ var require_mobile_tab_detector = __commonJS({
               rect
             })
           );
-          this.plugin.logger.logInfo(
+          this.plugin.logger.logVerbose(
             `Initial tab view state: ${this.isTabViewOpen ? "OPEN" : "CLOSED"}`
           );
           this.notifyStateChange(this.isTabViewOpen);
@@ -475,13 +475,13 @@ var require_mobile_tab_detector = __commonJS({
         };
       }
       cleanup() {
-        this.plugin.logger.logInfo("MobileTabDetector: Starting cleanup");
+        this.plugin.logger.logVerbose("MobileTabDetector: Starting cleanup");
         if (this.domObserver) {
           this.domObserver.stop();
         }
         this.callbacks.clear();
         this.isTabViewOpen = false;
-        this.plugin.logger.logInfo("MobileTabDetector: Cleanup complete");
+        this.plugin.logger.logVerbose("MobileTabDetector: Cleanup complete");
       }
     };
     module2.exports = { MobileTabDetector };
@@ -639,7 +639,7 @@ var require_search_interface = __commonJS({
         };
       }
       async showFloatingButton(onClickCallback) {
-        this.plugin.logger.logInfo("Showing floating search button");
+        this.plugin.logger.logVerbose("Showing floating search button");
         this.hideFloatingButton();
         try {
           this.floatingButton = document.createElement("button");
@@ -738,7 +738,7 @@ var require_search_interface = __commonJS({
         }
       }
       showSearchInterface(tabs, onTabSelect, onSearchClose) {
-        this.plugin.logger.logInfo(
+        this.plugin.logger.logVerbose(
           `Showing search interface with ${tabs.length} tabs`
         );
         this.currentTabs = tabs;
@@ -1362,7 +1362,7 @@ var require_tab_manager = __commonJS({
         }
       }
       navigateToTab(tab) {
-        this.plugin.logger.logInfo(
+        this.plugin.logger.logVerbose(
           `Navigating to tab: ${tab.displayName} (${tab.source})`
         );
         try {
@@ -1505,7 +1505,7 @@ var require_tab_search_manager = __commonJS({
         this.cleanupCallbacks = [];
       }
       async initialize() {
-        this.plugin.logger.logInfo(
+        this.plugin.logger.logVerbose(
           "TabSearchManager: Starting initialization with event-based detection"
         );
         try {
@@ -1513,7 +1513,7 @@ var require_tab_search_manager = __commonJS({
           this.mobileDetector.onStateChange((isOpen) => {
             this.handleTabViewStateChange(isOpen);
           });
-          this.plugin.logger.logInfo(
+          this.plugin.logger.logVerbose(
             "TabSearchManager: Initialization complete"
           );
         } catch (error) {
@@ -1523,7 +1523,7 @@ var require_tab_search_manager = __commonJS({
         }
       }
       handleTabViewStateChange(isOpen) {
-        this.plugin.logger.logInfo(
+        this.plugin.logger.logVerbose(
           `Tab view state changed via event: ${this.isTabViewOpen ? "OPEN" : "CLOSED"} -> ${isOpen ? "OPEN" : "CLOSED"}`
         );
         const previousState = this.isTabViewOpen;
@@ -1535,7 +1535,9 @@ var require_tab_search_manager = __commonJS({
         }
       }
       handleTabViewOpened() {
-        this.plugin.logger.logInfo("Tab view opened - showing search button");
+        this.plugin.logger.logVerbose(
+          "Tab view opened - showing search button"
+        );
         try {
           this.searchInterface.showFloatingButton(
             () => this.handleSearchButtonClick()
@@ -1547,7 +1549,9 @@ var require_tab_search_manager = __commonJS({
         }
       }
       handleTabViewClosed() {
-        this.plugin.logger.logInfo("Tab view closed - cleaning up interface");
+        this.plugin.logger.logVerbose(
+          "Tab view closed - cleaning up interface"
+        );
         try {
           this.searchInterface.hideFloatingButton();
           if (this.isSearchActive) {
@@ -1561,7 +1565,7 @@ var require_tab_search_manager = __commonJS({
         }
       }
       async handleSearchButtonClick() {
-        this.plugin.logger.logInfo("Search button clicked");
+        this.plugin.logger.logVerbose("Search button clicked");
         if (this.isSearchActive) {
           this.searchInterface.hideSearchInterface();
           this.isSearchActive = false;
@@ -1577,7 +1581,9 @@ var require_tab_search_manager = __commonJS({
         }
       }
       handleTabSelection(selectedTab) {
-        this.plugin.logger.logInfo(`Tab selected: ${selectedTab.displayName}`);
+        this.plugin.logger.logVerbose(
+          `Tab selected: ${selectedTab.displayName}`
+        );
         try {
           this.tabManager.navigateToTab(selectedTab);
           this.searchInterface.hideSearchInterface();
@@ -1614,7 +1620,7 @@ var require_tab_search_manager = __commonJS({
         };
       }
       cleanup() {
-        this.plugin.logger.logInfo("TabSearchManager: Starting cleanup");
+        this.plugin.logger.logVerbose("TabSearchManager: Starting cleanup");
         if (this.mobileDetector) {
           this.mobileDetector.cleanup();
         }
@@ -1633,7 +1639,7 @@ var require_tab_search_manager = __commonJS({
         this.cleanupCallbacks = [];
         this.isTabViewOpen = false;
         this.isSearchActive = false;
-        this.plugin.logger.logInfo("TabSearchManager: Cleanup complete");
+        this.plugin.logger.logVerbose("TabSearchManager: Cleanup complete");
       }
     };
     module2.exports = { TabSearchManager: TabSearchManager2 };
@@ -2007,9 +2013,9 @@ var TabSearchPlugin = class extends Plugin {
     const shouldDowngrade = this.settings.autoDowngradeLevelMinutes > 0 && highLogLevels.includes(this.settings.logLevel);
     if (shouldDowngrade) {
       const delayInMs = this.settings.autoDowngradeLevelMinutes * 60 * 1e3;
-      this.logger.logInfo(`Log level will auto-downgrade to INFO in ${this.settings.autoDowngradeLevelMinutes} minutes.`);
+      this.logger.logVerbose(`Log level will auto-downgrade to INFO in ${this.settings.autoDowngradeLevelMinutes} minutes.`);
       this.logDowngradeTimer = setTimeout(() => {
-        this.logger.logInfo("Auto-downgrading log level to INFO.");
+        this.logger.logVerbose("Auto-downgrading log level to INFO.");
         this.settings.logLevel = LogLevel.INFO;
         this.saveSettings();
       }, delayInMs);

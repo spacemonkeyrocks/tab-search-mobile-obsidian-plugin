@@ -15,7 +15,7 @@ class TabSearchManager {
     }
 
     async initialize() {
-        this.plugin.logger.logInfo(
+        this.plugin.logger.logVerbose(
             'TabSearchManager: Starting initialization with event-based detection'
         );
 
@@ -28,7 +28,7 @@ class TabSearchManager {
                 this.handleTabViewStateChange(isOpen);
             });
 
-            this.plugin.logger.logInfo(
+            this.plugin.logger.logVerbose(
                 'TabSearchManager: Initialization complete'
             );
         } catch (error) {
@@ -39,7 +39,7 @@ class TabSearchManager {
     }
 
     handleTabViewStateChange(isOpen) {
-        this.plugin.logger.logInfo(
+        this.plugin.logger.logVerbose(
             `Tab view state changed via event: ${this.isTabViewOpen ? 'OPEN' : 'CLOSED'} -> ${isOpen ? 'OPEN' : 'CLOSED'}`
         );
 
@@ -54,7 +54,9 @@ class TabSearchManager {
     }
 
     handleTabViewOpened() {
-        this.plugin.logger.logInfo('Tab view opened - showing search button');
+        this.plugin.logger.logVerbose(
+            'Tab view opened - showing search button'
+        );
 
         try {
             this.searchInterface.showFloatingButton(() =>
@@ -68,7 +70,9 @@ class TabSearchManager {
     }
 
     handleTabViewClosed() {
-        this.plugin.logger.logInfo('Tab view closed - cleaning up interface');
+        this.plugin.logger.logVerbose(
+            'Tab view closed - cleaning up interface'
+        );
 
         try {
             this.searchInterface.hideFloatingButton();
@@ -84,7 +88,7 @@ class TabSearchManager {
     }
 
     async handleSearchButtonClick() {
-        this.plugin.logger.logInfo('Search button clicked');
+        this.plugin.logger.logVerbose('Search button clicked');
 
         if (this.isSearchActive) {
             // Close search if already open
@@ -105,7 +109,9 @@ class TabSearchManager {
     }
 
     handleTabSelection(selectedTab) {
-        this.plugin.logger.logInfo(`Tab selected: ${selectedTab.displayName}`);
+        this.plugin.logger.logVerbose(
+            `Tab selected: ${selectedTab.displayName}`
+        );
 
         try {
             this.tabManager.navigateToTab(selectedTab);
@@ -154,7 +160,7 @@ class TabSearchManager {
     }
 
     cleanup() {
-        this.plugin.logger.logInfo('TabSearchManager: Starting cleanup');
+        this.plugin.logger.logVerbose('TabSearchManager: Starting cleanup');
 
         // Clean up detector callbacks
         if (this.mobileDetector) {
@@ -181,7 +187,7 @@ class TabSearchManager {
         this.isTabViewOpen = false;
         this.isSearchActive = false;
 
-        this.plugin.logger.logInfo('TabSearchManager: Cleanup complete');
+        this.plugin.logger.logVerbose('TabSearchManager: Cleanup complete');
     }
 }
 

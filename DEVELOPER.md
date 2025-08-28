@@ -50,6 +50,7 @@ Create a `.env` file in the project root. This file tells the scripts where your
 ```
 # .env file
 OBSIDIAN_VAULT=/path/to/your/test/vault
+GITHUB_TOKEN=ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 HOT_RELOAD=true
 ```
 

@@ -109,7 +109,7 @@ The process is:
 2.  **Approval:** Once your plugin is approved, it will be added to the community plugin list.
 3.  **Automatic Updates:** After that initial approval, the Obsidian systems will automatically pick up new versions whenever you create a new GitHub Release (like the ones semantic-release creates) that contains the required `main.js`, `manifest.json`, and `styles.css` files.
 
-If you haven't done the initial submission yet, you can find the official instructions on how to do so here: [Submit your plugin to the community list](https://docs.obsidian.md/Plugins/Getting+started/Submit+your+plugin).
+If you haven't done the initial submission yet, you can find the official instructions on how to do so here: [Submit your plugin to the community list](https://docs.obsidian.md/Plugins/Releasing/Submit+your+plugin).
 
 ### Release Assets
 

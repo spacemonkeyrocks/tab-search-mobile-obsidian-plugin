@@ -16,7 +16,7 @@ class MobileTabDetector {
     }
 
     async initialize() {
-        this.plugin.logger.logInfo(
+        this.plugin.logger.logVerbose(
             'MobileTabDetector: Starting initialization with DOM observer'
         );
 
@@ -41,7 +41,7 @@ class MobileTabDetector {
         // Check initial state
         this.checkCurrentState();
 
-        this.plugin.logger.logInfo(
+        this.plugin.logger.logVerbose(
             'MobileTabDetector: Initialization complete'
         );
     }
@@ -109,7 +109,7 @@ class MobileTabDetector {
             this.debugInfo.detectionMethod = detectionMethod;
             this.debugInfo.currentElements = currentElements;
 
-            this.plugin.logger.logInfo(
+            this.plugin.logger.logVerbose(
                 `Tab view state changed: ${previousState ? 'OPEN' : 'CLOSED'} -> ${this.isTabViewOpen ? 'OPEN' : 'CLOSED'} (${detectionMethod})`
             );
 
@@ -138,7 +138,7 @@ class MobileTabDetector {
                 })
             );
 
-            this.plugin.logger.logInfo(
+            this.plugin.logger.logVerbose(
                 `Initial tab view state: ${this.isTabViewOpen ? 'OPEN' : 'CLOSED'}`
             );
 
@@ -247,7 +247,7 @@ class MobileTabDetector {
     }
 
     cleanup() {
-        this.plugin.logger.logInfo('MobileTabDetector: Starting cleanup');
+        this.plugin.logger.logVerbose('MobileTabDetector: Starting cleanup');
 
         if (this.domObserver) {
             this.domObserver.stop();
@@ -256,7 +256,7 @@ class MobileTabDetector {
         this.callbacks.clear();
         this.isTabViewOpen = false;
 
-        this.plugin.logger.logInfo('MobileTabDetector: Cleanup complete');
+        this.plugin.logger.logVerbose('MobileTabDetector: Cleanup complete');
     }
 }
 

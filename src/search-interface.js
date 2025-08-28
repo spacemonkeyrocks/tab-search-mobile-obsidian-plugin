@@ -21,7 +21,7 @@ class SearchInterface {
     }
 
     async showFloatingButton(onClickCallback) {
-        this.plugin.logger.logInfo('Showing floating search button');
+        this.plugin.logger.logVerbose('Showing floating search button');
 
         this.hideFloatingButton();
 
@@ -141,7 +141,7 @@ class SearchInterface {
     }
 
     showSearchInterface(tabs, onTabSelect, onSearchClose) {
-        this.plugin.logger.logInfo(
+        this.plugin.logger.logVerbose(
             `Showing search interface with ${tabs.length} tabs`
         );
 

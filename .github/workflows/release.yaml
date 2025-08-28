@@ -9,17 +9,27 @@ jobs:
   release:
     name: Create Release
     runs-on: ubuntu-latest
+    
+    # 1. Add explicit permissions for the job
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '20' # Use a long-term support version of Node.js
+          node-version: '20'
+          # 2. Add caching for npm dependencies
+          cache: 'npm'
 
       - name: Install Dependencies
-        run: npm install
+        # 3. Use npm ci for faster, more reliable installs
+        run: npm ci
 
       - name: Run Semantic Release
         run: npx semantic-release

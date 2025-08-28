@@ -1,5 +1,5 @@
 # Ignore bundled output and release.zip
-./main.js
+/main.js
 release.zip
 
 # Dependencies

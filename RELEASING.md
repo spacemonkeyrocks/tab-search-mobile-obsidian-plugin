@@ -92,16 +92,6 @@ Now, the process is fully automated.
 
 You can watch the progress in the **"Actions"** tab of your GitHub repository. If the commits contain `fix:` or `feat:`, a new release will be created and published automatically.
 
-### Performing Your First Release
-Since this is the first release, there are no previous tags for `semantic-release` to compare against. The process is simpler:
-
-1.  **Ensure `main` is ready:** Make sure all your completed features and fixes are committed and pushed to your local `main` branch. Your commit history should contain at least one `feat:` or `fix:` message.
-2.  **Push to GitHub:** The GitHub Action is triggered on a push to the `main` branch. To trigger your first release, simply push your local `main` branch to the remote repository:
-    ```bash
-    git push origin main
-    ```
-3.  **Watch the Action:** Go to the "Actions" tab in your GitHub repository. You will see the "release" workflow running. It will analyze all commits on the branch, determine the initial version (e.g., `1.0.0`), and publish the release.
-
 #### Creating the Pull Request
 After you've pushed your branch to GitHub, follow these steps:
 1.  **Go to the Repository:** Navigate to the main page of your repository on GitHub.
@@ -110,3 +100,39 @@ After you've pushed your branch to GitHub, follow these steps:
 3.  **Select Branches:** Ensure the base repository's `main` branch is on the left and your feature branch is on the right.
 4.  **Fill Out the Template:** GitHub will automatically pre-fill the description with the content from [PULL_REQUEST_TEMPLATE.md](PULL_REQUEST_TEMPLATE.md). Fill out the relevant sections.
 5.  **Create the Pull Request:** Click the **"Create pull request"** button.
+
+#### Important Note: The Publishing Process
+Creating a release on your GitHub repository (which semantic-release does automatically) is a necessary prerequisite, but it does not automatically submit your plugin to the Obsidian team for review and inclusion in the community list.
+
+The process is:
+1.  **Initial Submission:** You must first submit your GitHub repository to the Obsidian team for an initial code review. They will check it for safety and functionality.
+2.  **Approval:** Once your plugin is approved, it will be added to the community plugin list.
+3.  **Automatic Updates:** After that initial approval, the Obsidian systems will automatically pick up new versions whenever you create a new GitHub Release (like the ones semantic-release creates) that contains the required `main.js`, `manifest.json`, and `styles.css` files.
+
+If you haven't done the initial submission yet, you can find the official instructions on how to do so here: [Submit your plugin to the community list](https://docs.obsidian.md/Plugins/Getting+started/Submit+your+plugin).
+
+### Release Assets
+
+The automated release process will create a GitHub release with the following assets:
+- `main.js` - The bundled plugin code
+- `manifest.json` - Plugin metadata
+- `styles.css` - Plugin styles
+- `tab-search-mobile-{version}.zip` - Complete plugin package
+
+### Mobile Testing Before Release
+
+Since this is a mobile-only plugin, ensure you test all changes on actual mobile devices before releasing:
+
+1. **Android Testing**: Use Chrome remote debugging to test on Android devices
+2. **iOS Testing**: Test on iOS devices with available debugging tools
+3. **Cross-Device Compatibility**: Test on different screen sizes and Android/iOS versions
+4. **Theme Compatibility**: Test with different Obsidian mobile themes
+
+### Version Strategy
+
+This plugin follows semantic versioning:
+- **Patch (x.x.1)**: Bug fixes, performance improvements, documentation updates
+- **Minor (x.1.x)**: New features, UI improvements, additional settings
+- **Major (1.x.x)**: Breaking changes, major architecture changes, API changes
+
+Given the mobile-only nature and UI dependencies, most releases will likely be minor or patch versions.

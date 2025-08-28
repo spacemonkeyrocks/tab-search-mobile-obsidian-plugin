@@ -1,10 +1,3 @@
-## [1.0.1](https://github.com/spacemonkeyrocks/tab-search-mobile-obsidian-plugin/compare/1.0.0...1.0.1) (2025-08-28)
-
-
-### Bug Fixes
-
-* use /main.js pattern to ignore root file but allow src/main.js ([36e7f17](https://github.com/spacemonkeyrocks/tab-search-mobile-obsidian-plugin/commit/36e7f17262084e815710aa8e983f9bdf39dc8999))
-
 # 1.0.0 (2025-08-28)
 
 

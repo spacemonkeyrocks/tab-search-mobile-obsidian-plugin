@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/spacemonkeyrocks/tab-search-mobile-obsidian-plugin/compare/1.0.0...1.0.1) (2025-08-29)
+
+
+### Reverts
+
+* Revert "chore(release): 1.0.1 [skip ci]" ([f022ae4](https://github.com/spacemonkeyrocks/tab-search-mobile-obsidian-plugin/commit/f022ae4bb6c9c1d2b9982e7fd594fcc5ee223151))
+
 # 1.0.0 (2025-08-27)
 
 
